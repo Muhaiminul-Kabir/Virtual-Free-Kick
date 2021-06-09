@@ -1,5 +1,5 @@
-# Virtual-Free-Kick
-<img src="MacBook - 1.png" alt="My cool logo
+# Virtual-Free-Kick"<
+<img src="MacBook - 1.png" alt="My cool logo"/>
 ## Features 
 ## Installation 
 ## Release 
