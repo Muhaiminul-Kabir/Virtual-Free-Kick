@@ -1,5 +1,5 @@
 # Virtual-Free-Kick
-![Screenshot](Macbook - 1.png)
+![Screenshot](MacBook - 1.png)
 ## Features 
 ## Installation 
 ## Release 
