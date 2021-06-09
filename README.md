@@ -2,8 +2,12 @@
 ## Features 
 ## Installation 
 ## Release 
+To use our source code or implement any features on your project/game just download any release. 
+
 ## Made with
-We made this game using C and C++ with the help of a 3D library <a href = "raylib.com">raylib</a> .
+We made this game using C and C++.<br>
+Libraries used:
+ - raylib (www.raylib.com)
 ## Contributes
 - MD. Muhaiminul Kabir <br>
    www.facebook.com/nirxon020
