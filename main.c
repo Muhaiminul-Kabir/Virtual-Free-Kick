@@ -13,7 +13,7 @@
 #include "math.h"
 #define RAD  (3.1416/180)
 //global var initalization//start
-#define THETA degToRad(angle)
+
 int screenWidth = 1020;
 int screenHeight = 750;
 
@@ -21,6 +21,14 @@ const float g = 9.8f ;
 float  u = 16.93302;
 float c = 20 * RAD;
 float x = 0.0f,y ,z;  
+
+
+//end
+
+
+//functions//start
+
+
 float projectileDis(float theta, float v0) {
     float dis;
     dis = (v0*v0*sin(2*theta))/g ;
@@ -50,7 +58,7 @@ float projectileTime(float theta, float v0) {
 void projectile(){
     
     y = 0.09+(tan(c)*x - ((g*x*x)/((2*u*cos(c))*(2*u*cos(c)))));
-     z = tan(c)*x - ((g*x*x)/((2*u*cos(c))*(2*u*cos(c))));
+    z = tan(c)*x - ((g*x*x)/((2*u*cos(c))*(2*u*cos(c))));
 }
 
 
@@ -71,7 +79,7 @@ int main(void)
     camera.up = (Vector3){ 0.0f, 1.0f, 0.0f };          // Camera up vector (rotation towards target)
     camera.fovy = 45.0f;                                // Camera field-of-view Y
     camera.projection = CAMERA_PERSPECTIVE;             // Camera mode typeZ
-     SetCameraMode(camera, CAMERA_FREE);
+    SetCameraMode(camera, CAMERA_FREE);
     
     int boxPositionY = screenHeight/2 - 40;
     int scrollSpeed = 4;            // Scrolling speed in pixels
@@ -83,9 +91,9 @@ int main(void)
     while (!WindowShouldClose())    // Detect window close button or ESC key
     {
         // Update
-         UpdateCamera(&camera);   
+        UpdateCamera(&camera);   
         //----------------------------------------------------------------------------------
-         SetExitKey(KEY_L); 
+        SetExitKey(KEY_L); 
         Vector3 pos = { x, y,z};
         Vector3 centerPos = {0,0,0};
         Vector3 startPos = {50,0,0};
@@ -94,25 +102,20 @@ int main(void)
         Vector3 startPos2 = {50,0,2};
         Vector3 endPos2 = {50,0.9,2};
        
-       boxPositionY -= (GetMouseWheelMove()*scrollSpeed);
-       if(IsKeyDown(KEY_RIGHT)){
-          z++;
-       }
+        boxPositionY -= (GetMouseWheelMove()*scrollSpeed);
+        if(IsKeyDown(KEY_RIGHT)){
+           z++;
+        }
         if(IsKeyDown(KEY_UP)){
-          x = 0;
-          
-          
-           
-       }
+          x = 0;     
+        }
       
-       if(IsKeyDown(KEY_LEFT)){
-
-           x+=1;
-       }
-       if(IsKeyDown(KEY_K)){
-
-           x= 0;
-       }
+        if(IsKeyDown(KEY_LEFT)){
+          x+=1;
+        }
+        if(IsKeyDown(KEY_K)){
+            x= 0;
+        }
 
         
       
@@ -130,15 +133,17 @@ int main(void)
                 
                 DrawPlane(centerPos,size, GREEN);
                 DrawLine3D(startPos,endPos, WHITE);
-                  DrawLine3D(startPos2,endPos2, WHITE);
+                DrawLine3D(startPos2,endPos2, WHITE);
                 DrawSphere(pos,0.1f,RED);
-               // DrawSphere(pos2,1.0f,RED);
-              //  x++;
-               // DrawGrid(10,10);
+                // DrawSphere(pos2,1.0f,RED);
+             
+                // DrawGrid(10,10);
                 projectile();
+        
+        
              //end
              EndMode3D();
-            //  DrawText("j", y, 10, 20, MAROON);
+             //  DrawText("j", y, 10, 20, MAROON);
           
         EndDrawing();
         //----------------------------------------------------------------------------------
