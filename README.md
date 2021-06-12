@@ -7,7 +7,7 @@ To use our source code or implement any features on your project/game just downl
 - [1.0](https://github.com/Muhaiminul-Kabir/Virtual-Free-Kick/releases/tag/1.0)
 - [1.0.1](https://github.com/Muhaiminul-Kabir/Virtual-Free-Kick/releases/tag/1.0.1)
 ## Made with
-We made this game using C and C++.<br>
+We made this game using C.<br>
 Libraries used:
 - raylib (www.raylib.com)
 ## Contributes
