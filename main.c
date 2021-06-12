@@ -41,7 +41,7 @@ float projectileMaxH(float theta, float v0) {
     return maxH;
 }
 
-float projectilev0(float theta, float dis) {
+float projectileV0(float theta, float dis) {
     float v0;
     v0 = sqrt(g/sin(2*theta)) ;
     return v0;
