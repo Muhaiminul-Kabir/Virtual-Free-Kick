@@ -17,14 +17,10 @@
 int screenWidth = 1020;
 int screenHeight = 750;
 
-float camX =0.0;
-float camY =0.0;
-float camZ =0.0;
-
 const float g = 9.8f ;
-float u = 15;
-float c = 10 * RAD;
-float x = 0.0f,y,z;  
+float  u = 16.93302;
+float c = 20 * RAD;
+float x = 0.0f,y ,z;  
 float projectileDis(float theta, float v0) {
     float dis;
     dis = (v0*v0*sin(2*theta))/g ;
@@ -37,6 +33,12 @@ float projectileMaxH(float theta, float v0) {
     return maxH;
 }
 
+float projectilev0(float theta, float dis) {
+    float v0;
+    v0 = sqrt(g/sin(2*theta)) ;
+    return v0;
+}
+
 
 float projectileTime(float theta, float v0) {
     float t;
@@ -46,7 +48,9 @@ float projectileTime(float theta, float v0) {
 
 
 void projectile(){
-    y = tan(c)*x - ((g*x*x)/((2*u*cos(c))*(2*u*cos(c))));
+    
+    y = 0.09+(tan(c)*x - ((g*x*x)/((2*u*cos(c))*(2*u*cos(c)))));
+     z = tan(c)*x - ((g*x*x)/((2*u*cos(c))*(2*u*cos(c))));
 }
 
 
@@ -57,12 +61,12 @@ int main(void)
     // Initialization
     
     //--------------------------------------------------------------------------------------
-   
+
 
     InitWindow(screenWidth, screenHeight, "raylib [core] example - input mouse wheel");
     
     Camera3D camera = { 0 };
-    camera.position = (Vector3){ 10,10,10 };  // Camera position
+    camera.position = (Vector3){ -40,1,0 };  // Camera position
     camera.target = (Vector3){ 0.0f, 0.0f, 0.0f };      // Camera looking at point
     camera.up = (Vector3){ 0.0f, 1.0f, 0.0f };          // Camera up vector (rotation towards target)
     camera.fovy = 45.0f;                                // Camera field-of-view Y
@@ -84,20 +88,23 @@ int main(void)
          SetExitKey(KEY_L); 
         Vector3 pos = { x, y,z};
         Vector3 centerPos = {0,0,0};
-        Vector2 size = {100,100};
+        Vector3 startPos = {50,0,0};
+        Vector3 endPos = {50,0.9,0};
+        Vector2 size = {50,100};
+        Vector3 startPos2 = {50,0,2};
+        Vector3 endPos2 = {50,0.9,2};
        
        boxPositionY -= (GetMouseWheelMove()*scrollSpeed);
        if(IsKeyDown(KEY_RIGHT)){
           z++;
        }
         if(IsKeyDown(KEY_UP)){
-           y+=1;
+          x = 0;
+          
+          
            
        }
-       if(IsKeyDown(KEY_DOWN)){
-           y-=1;
-           
-       }
+      
        if(IsKeyDown(KEY_LEFT)){
 
            x+=1;
@@ -119,16 +126,20 @@ int main(void)
             ClearBackground(SKYBLUE);
             BeginMode3D(camera);
             //start
+               
+                
                 DrawPlane(centerPos,size, GREEN);
-                DrawSphere(pos,1.0f,RED);
+                DrawLine3D(startPos,endPos, WHITE);
+                  DrawLine3D(startPos2,endPos2, WHITE);
+                DrawSphere(pos,0.1f,RED);
                // DrawSphere(pos2,1.0f,RED);
-                x++;
-                DrawGrid(10,10);
+              //  x++;
+               // DrawGrid(10,10);
                 projectile();
              //end
              EndMode3D();
             //  DrawText("j", y, 10, 20, MAROON);
-           
+          
         EndDrawing();
         //----------------------------------------------------------------------------------
     }
