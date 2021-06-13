@@ -9,7 +9,7 @@ To use our source code or implement any features on your project/game just downl
 ## Made with
 We made this game using C.<br>
 Libraries used:
-- raylib (www.raylib.com)
+- raylib.h (www.raylib.com)
 ## Contributes
 - MD. Muhaiminul Kabir <br>
    www.facebook.com/nirxon020
